@@ -29,6 +29,6 @@ func Countdown(out io.Writer, sleeper Sleeper) {
 }
 
 func main() {
-	sleeper := DefaultSleeper{}
+	sleeper := &DefaultSleeper{}
 	Countdown(os.Stdout, sleeper)
 }
