@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"errors"
+	"strings"
+)
 
 type RomanNumeral struct {
 	Value  uint16
@@ -23,7 +26,11 @@ var allRomanNumerals = []RomanNumeral{
 	{1, "I"},
 }
 
-func ConvertToRoman(arabic uint16) string {
+func ConvertToRoman(arabic uint16) (string, error) {
+	if arabic > 3999 {
+		return "", errors.New("Cannot convert numbers greater than 3999")
+	}
+
 	var result strings.Builder
 
 	for _, numeral := range allRomanNumerals {
@@ -33,7 +40,7 @@ func ConvertToRoman(arabic uint16) string {
 		}
 	}
 
-	return result.String()
+	return result.String(), nil
 }
 
 func ConvertToArabic(roman string) uint16 {
