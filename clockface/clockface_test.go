@@ -57,6 +57,7 @@ func TestSecondHandPoint(t *testing.T) {
 
 func roughlyEqualFloat64(a, b float64) bool {
 	const equalityTreshold = 1e-7
+	// math.Abs is to ensure that a positive value is always returned
 	return math.Abs(a-b) < equalityTreshold
 }
 
