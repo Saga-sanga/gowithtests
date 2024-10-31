@@ -10,13 +10,6 @@ type Point struct {
 	Y float64
 }
 
-const (
-	secondHandLength = 90
-	minuteHandLength = 80
-	clockCentreX     = 150
-	clockCentreY     = 150
-)
-
 // SecondHand is the unit vector of the second hand of an analogue clock at time `t`
 // represented as a Point.
 func SecondHand(t time.Time) Point {
@@ -41,6 +34,10 @@ func minutesInRadians(t time.Time) float64 {
 
 func minuteHandPoint(t time.Time) Point {
 	return angleToPoint(minutesInRadians(t))
+}
+
+func hourHandPoint(t time.Time) Point {
+	return angleToPoint(hoursInRadians(t))
 }
 
 func hoursInRadians(t time.Time) float64 {
